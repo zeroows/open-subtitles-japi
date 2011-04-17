@@ -43,7 +43,7 @@ import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 public class OpenSubtitlesAPI {
 
   private static final Logger log = Logger.getLogger(OpenSubtitlesAPI.class);
-  private static final String USER_AGENT = "OS Test User Agent"; //"jOSAPI 1.0";
+  private static final String USER_AGENT = "jOSAPI 1.0";
   private static final String END_POINT = "http://api.opensubtitles.org/xml-rpc";
   private static final String LANGUAGE = "en";
   private XmlRpcClient client;
