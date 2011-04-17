@@ -19,7 +19,7 @@ package com.googlecode.opensubtitlesjapi;
 
 /**
  *
- * @author dan
+ * @author daniele.belletti@gmail.com
  */
 public enum LANGUAGE {
   ENG("eng"),

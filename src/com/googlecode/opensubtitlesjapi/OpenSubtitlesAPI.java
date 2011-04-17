@@ -38,7 +38,7 @@ import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
 /**
  *
- * @author Daniele Belletti
+ * @author daniele.belletti@gmail.com
  */
 public class OpenSubtitlesAPI {
 

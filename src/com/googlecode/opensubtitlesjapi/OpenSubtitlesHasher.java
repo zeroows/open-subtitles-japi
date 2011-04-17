@@ -30,7 +30,7 @@ import java.nio.channels.FileChannel.MapMode;
 
 /**
  *
- * @author dan
+ * @author daniele.belletti@gmail.com
  */
 /**
  * Hash code is based on Media Player Classic. In natural language it calculates: size + 64bit

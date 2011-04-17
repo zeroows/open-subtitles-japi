@@ -25,7 +25,7 @@ import org.xml.sax.SAXException;
 
 /**
  *
- * @author Daniele Belletti
+ * @author daniele.belletti@gmail.com
  */
 public class TypeFactory extends TypeFactoryImpl {
 

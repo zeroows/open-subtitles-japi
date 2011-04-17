@@ -19,7 +19,7 @@ package com.googlecode.opensubtitlesjapi;
 
 /**
  *
- * @author Daniele Belletti
+ * @author daniele.belletti@gmail.com
  */
 public class OpenSubtitlesException extends Exception {
 
