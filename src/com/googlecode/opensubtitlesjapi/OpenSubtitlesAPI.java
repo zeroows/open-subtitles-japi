@@ -44,6 +44,7 @@ public class OpenSubtitlesAPI {
 
   private static final Logger log = Logger.getLogger(OpenSubtitlesAPI.class);
   private static final String USER_AGENT = "jOSAPI 1.0";
+  //private static final String USER_AGENT = "OS Test User Agent";
   private static final String END_POINT = "http://api.opensubtitles.org/xml-rpc";
   private static final String LANGUAGE = "en";
   private XmlRpcClient client;
@@ -91,9 +92,9 @@ public class OpenSubtitlesAPI {
       List<Object> params = new ArrayList<Object>();
       List<Object> searches = new ArrayList<Object>();
       Map<String, Object> search = new HashMap<String, Object>();
-      StringBuilder sb = new StringBuilder(languages[0].toString());
+      StringBuilder sb = new StringBuilder(languages[0].toString().toLowerCase());
       for (int i = 1; i < languages.length; i++) {
-        sb.append(',').append(languages[i].toString());
+        sb.append(',').append(languages[i].toString().toLowerCase());
       }
       search.put("sublanguageid", sb.toString());
       search.put("moviehash", OpenSubtitlesHasher.computeHash(movie));
@@ -104,9 +105,19 @@ public class OpenSubtitlesAPI {
       params.add(token);
       params.add(searches);
       Map<String, Object> temp = executeAPI(API.SEARCH, params);
-      Object[] data = (Object[]) temp.get("data");
-      for (Object o : data) {
-        results.add((Map<String, Object>) o);
+      Object resObject = (Object) temp.get("data");
+      if (resObject instanceof Object[]) {
+        Object[] data = (Object[]) resObject;
+        for (Object o : data) {
+          results.add((Map<String, Object>) o);
+        }
+      } else if (resObject instanceof Boolean) {
+        Boolean result = (Boolean) resObject;
+        if (!result) {
+          log.info("No results found for " + movie.getAbsolutePath());
+        }
+      } else {
+        throw new Exception("Not know object type: " + resObject.getClass());
       }
     } catch (Exception e) {
       throw new OpenSubtitlesException("search error", e);
